@@ -1,0 +1,26 @@
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= @garden.banner_url %>);">
+  <div class="container">
+    <h1><%= @garden.name %></h1>
+  </div>
+</div>
+
+
+<div class="container">
+  <div class="cards">
+    <% @garden.plants.each do |plant| %>
+      <div class="card-category m-2 position-relative" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= plant.image_url %>)">
+        <%= plant.name %>
+
+        <%= link_to 'delete', plant_path(plant), method: 'delete', class: 'btn btn-danger btn-xs position-absolute btn-delete' %>
+      </div>
+
+    <% end %>
+  </div>
+
+  <%= link_to '+ Plant', new_garden_plant_path(@garden), class: 'btn btn-success' %>
+
+
+  <%= link_to 'Edit', edit_garden_path(@garden) %> |
+  <%= link_to 'Back', gardens_path %>
+</div>
+
